@@ -4,7 +4,7 @@ Cinephilia is a responsive web app that lets users explore trending movies and T
 
 ## 🚀 Live Demo
 
-[🔗 Visit Cinephilia App](https://your-firebase-deployed-url.web.app)
+[🔗 Visit Cinephilia App](https://cinephilia-8100c.web.app/)
 
 ## 🛠 Tech Stack
 
