@@ -16,16 +16,19 @@ import {
   MenuItem,
   MenuList,
   useDisclosure,
+  useColorMode,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/useAuth";
-import { HamburgerIcon, SearchIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, SearchIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 
 const Navbar = () => {
   const { user, signInWithGoogle, logout } = useAuth();
   const { onOpen, isOpen, onClose } = useDisclosure();
+  const { colorMode, toggleColorMode } = useColorMode();
 
   const handleGoogleLogin = async () => {
+    console.log("Clicked sign-in avatar"); // 👈 add this
     try {
       await signInWithGoogle();
       console.log("success");
@@ -37,18 +40,28 @@ const Navbar = () => {
   return (
     <Box py="4" mb="2">
       <Container maxW={"container.xl"}>
-        <Flex justifyContent={"space-between"}>
-          <Link to="/">
-            <Box
-              fontSize={"2xl"}
-              fontWeight={"bold"}
-              color={"red"}
-              letterSpacing={"widest"}
-              fontFamily={"mono"}
-            >
-              NETFLEX
-            </Box>
-          </Link>
+        <Flex justifyContent={"space-between"} alignItems="center">
+          <Flex alignItems="center" gap={2}>
+            <Link to="/">
+              <Box
+                fontSize={"2xl"}
+                fontWeight={"bold"}
+                color={"red"}
+                letterSpacing={"widest"}
+                fontFamily={"mono"}
+              >
+                Cinephilia
+              </Box>
+            </Link>
+            <IconButton
+              aria-label="Toggle dark mode"
+              icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+              onClick={toggleColorMode}
+              variant="ghost"
+              size="md"
+              ml="2"
+            />
+          </Flex>
 
           {/* DESKTOP */}
           <Flex
